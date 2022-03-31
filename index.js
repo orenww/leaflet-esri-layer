@@ -78,7 +78,22 @@
           if (this.options.maps.includes('GrayLabels')) {
             baseLayers['GrayLabels'] = esri.basemapLayer('GrayLabels');
           }
-        }
+		  
+		  if (this.options.maps.includes('USATopo')) {
+			//Example to add map directly for offline mode using local server
+			var tileProtocol = 'http:';//(window.location.protocol !== 'https:') ? 'http:' : 'https:';
+			let USATopo =  {
+			urlTemplate: tileProtocol + '//{s}.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/{z}/{y}/{x}',
+				options: {
+					minZoom: 1,
+					maxZoom: 15,
+					subdomains: ['server', 'services'],
+					attribution: 'USGS, National Geographic Society, i-cubed'
+				}
+			}          
+			baseLayers['USATopo'] = esri.basemapLayer(USATopo);
+          }
+        }		
 
         L.control.layers(baseLayers, overlays).addTo(map);
 
