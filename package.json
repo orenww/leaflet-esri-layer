@@ -1,6 +1,6 @@
 {
 	"name": "leaflet-esri-layer",
-	"description":"For add layers and maps to leaflet map using esri-leaflet according configuration."
+	"description": "For add layers and maps to leaflet map using esri-leaflet according configuration.",
 	"version": "1.0.3",
 	"main": "index.js",
 	"scripts": {
