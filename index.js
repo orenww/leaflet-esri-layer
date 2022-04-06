@@ -1,12 +1,12 @@
 (function (root, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["leaflet", "esri-leaflet"], factory);
+    define(["leaflet", "esri-leaflet", "esri-leaflet-vector"], factory);
   } else if (typeof module === "object" && module.exports) {
     factory(require("leaflet"));
   } else {
     factory(root.L);
   }
-}(this, function (L, esri) {
+}(this, function (L, esri, vector) {
   L.Control.CbEsri = L.Control.extend({
     options: {
       maps: [],
@@ -53,6 +53,11 @@
             overlays['U.S. Election results'] = electionResultOverLay;
           }
         }
+		
+		    var vectorTileMicrosoft = vector.vectorTileLayer(
+              'https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Microsoft_Building_Footprints/VectorTileServer'
+            );
+			overlays['AAA'] = vectorTileMicrosoft;
 
         if (this.options.maps.length > 0) {
           var baseLayers = {
