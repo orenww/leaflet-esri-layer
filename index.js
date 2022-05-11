@@ -79,7 +79,7 @@
         }
 
         if(baseLayers || overlays){
-          L.control.layers(baseLayers, overlays).addTo(map);
+          L.control.layers(baseLayers, overlays, {position: 'topleft'}).addTo(map);
 
           var container = L.DomUtil.create('div', 'cb-esri');
 
